@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raghuraj Portfolio
 
-## Getting Started
+Premium, futuristic, recruiter-focused personal portfolio built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Parallax Tilt
+- Lucide React
+
+## Implemented Features
+
+- Futuristic hero with animated grid/gradient/particle background
+- Typewriter headline animation
+- Floating internship badge
+- Interactive CTA buttons: View Work, Hire Me, Download Resume
+- Floating AI chat widget: "Ask about Raghuraj"
+- Animated impact stats with on-scroll counters
+- Premium 3D tilt project cards with glow borders
+- Skills matrix with animated chips
+- Experience timeline and achievements section
+- "Why Hire Me" high-impact section
+- GitHub API integration for live repositories
+- Glassmorphism contact form (ready for EmailJS wiring)
+- Custom cursor glow and top scroll progress bar
+- SEO metadata (Open Graph + Twitter cards)
+
+## Folder Structure
+
+```text
+src/
+	app/
+		globals.css
+		layout.tsx
+		page.tsx
+	components/
+		animations/
+			FadeIn.tsx
+			HoverTilt.tsx
+		sections/
+			AchievementsSection.tsx
+			ContactSection.tsx
+			ExperienceSection.tsx
+			Footer.tsx
+			GithubReposSection.tsx
+			HeroSection.tsx
+			Navbar.tsx
+			ProjectsSection.tsx
+			SkillsSection.tsx
+			StatsSection.tsx
+			WhyHireMeSection.tsx
+		ui/
+			AIChatWidget.tsx
+			CursorGlow.tsx
+			ScrollProgress.tsx
+			SectionHeading.tsx
+			Typewriter.tsx
+	data/
+		portfolio.ts
+public/
+	Raghuraj_Pratap_Rajpoot_Resume.txt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open http://localhost:3000.
 
-## Learn More
+## Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## EmailJS Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The contact form is already structured. To connect EmailJS:
 
-## Deploy on Vercel
+1. Create an EmailJS service, template, and public key.
+2. Add these values in environment variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Update submit handler in [src/components/sections/ContactSection.tsx](src/components/sections/ContactSection.tsx) to call EmailJS.
+
+## Deployment (Vercel - Free)
+
+1. Push this repository to GitHub.
+2. Go to Vercel and import the repo.
+3. Framework preset: Next.js (auto-detected).
+4. Add environment variables (if EmailJS/OpenAI is enabled).
+5. Click Deploy.
+
+## Optional OpenAI Upgrade for Chat Widget
+
+Current widget uses reliable local mock intelligence for recruiter demos. You can swap to real OpenAI calls by adding an API route and secure server-side key usage.

@@ -1,0 +1,40 @@
+Raghuraj Pratap Rajpoot
+AI Engineer | Full Stack Developer | Gen-AI Specialist
+Location: India
+Email: raghurajrajpoot2819@gmail.com
+GitHub: https://github.com/RAGHURAJ09
+LinkedIn: https://www.linkedin.com/in/raghuraj-rajpoot
+
+Profile
+AI-focused full-stack builder with practical experience designing and shipping real-world Gen-AI systems. Strong at turning business needs into production-minded AI features with rapid iteration.
+
+Experience
+Gen-AI Intern, SkillCred
+- Built practical AI solutions for business-aligned use cases.
+- Improved engagement through intelligent, context-aware features.
+- Collaborated in fast prototype-to-delivery cycles.
+
+Highlighted Projects
+1) AI Chatbot (RAG based)
+- Stack: FastAPI, Next.js, LangChain, ChromaDB
+- Built context-aware Q&A using retrieval-augmented generation.
+
+2) Smart Interview Assistant
+- Stack: Python, React, Node.js, OpenAI APIs
+- Generated role-based interview workflows and evaluation insights.
+
+3) Portfolio Intelligence Dashboard
+- Stack: Next.js, TypeScript, Tailwind, REST APIs
+- Unified project and achievement tracking for recruiter-facing visibility.
+
+Skills
+AI/ML: Python, LangChain, RAG, Prompt Engineering, OpenAI APIs, Vector Databases
+Web: Next.js, React, TypeScript, Tailwind CSS, FastAPI, Node.js
+Tools: Git, GitHub, VS Code, Postman, Vercel, Docker
+
+Certifications
+- Microsoft AI-900
+- Microsoft AZ-900
+- Microsoft DP-700
+- Infosys Springboard
+- HackerRank Certifications
