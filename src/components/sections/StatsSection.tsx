@@ -23,7 +23,7 @@ function AnimatedNumber({ to }: { to: number }) {
     return spring.on("change", (latest) => setDisplay(Math.round(latest)));
   }, [spring]);
 
-  return <span ref={ref}>{display}</span>;
+  return <span ref={ref}>{to}</span>;
 }
 
 export default function StatsSection() {

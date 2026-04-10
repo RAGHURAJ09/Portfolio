@@ -28,9 +28,9 @@ type TechStackOrbFieldProps = {
   labels: string[];
 };
 
-const MIN_RADIUS = 30;
-const MAX_RADIUS = 64;
-const MIN_RENDER_RADIUS = 18;
+const MIN_RADIUS = 38;
+const MAX_RADIUS = 66;
+const MIN_RENDER_RADIUS = 24;
 const TARGET_COUNT = 30;
 const MIN_COUNT = 24;
 const DEPTH_NEAR = -90;
@@ -57,6 +57,38 @@ function clamp(value: number, min: number, max: number) {
 
 function randomBetween(min: number, max: number) {
   return Math.random() * (max - min) + min;
+}
+
+function randomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function shuffle<T>(items: T[]) {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function buildRandomizedLabelPool(labels: string[]) {
+  const base = Array.from(new Set(labels)).filter(Boolean);
+  if (base.length === 0) {
+    return ["Tech"];
+  }
+
+  const minDesired = Math.max(MIN_COUNT, base.length);
+  const maxDesired = Math.max(minDesired, TARGET_COUNT);
+  const desiredCount = randomInt(minDesired, maxDesired);
+
+  // Keep at least one orb for every technology, then add random extras.
+  const pool = [...base];
+  while (pool.length < desiredCount) {
+    pool.push(base[randomInt(0, base.length - 1)]);
+  }
+
+  return shuffle(pool);
 }
 
 function hashLabel(label: string) {
@@ -129,6 +161,17 @@ function getLabelColor(label: string) {
     } satisfies OrbPalette;
   }
 
+  if (/css/.test(normalized)) {
+    return {
+      logo: "CS",
+      logoPath: "/tech-logos/css3.svg",
+      hue: 210,
+      saturation: 78,
+      lightness: 44,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
   if (/typescript/.test(normalized)) {
     return {
       logo: "TS",
@@ -159,7 +202,117 @@ function getLabelColor(label: string) {
       hue: 108,
       saturation: 56,
       lightness: 40,
-      textColor: "#f8fafc",
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/spring\s?boot/.test(normalized)) {
+    return {
+      logo: "SB",
+      logoPath: "/tech-logos/springboot.svg",
+      hue: 138,
+      saturation: 54,
+      lightness: 42,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/express/.test(normalized)) {
+    return {
+      logo: "Ex",
+      logoPath: "/tech-logos/express.svg",
+      hue: 210,
+      saturation: 20,
+      lightness: 32,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/rest\s?apis?|restapi/.test(normalized)) {
+    return {
+      logo: "RA",
+      logoPath: "/tech-logos/restapi.svg",
+      hue: 198,
+      saturation: 62,
+      lightness: 42,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/postgres|postgresql/.test(normalized)) {
+    return {
+      logo: "Pg",
+      logoPath: "/tech-logos/postgresql.svg",
+      hue: 208,
+      saturation: 52,
+      lightness: 42,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/mongodb|mongo\s?db/.test(normalized)) {
+    return {
+      logo: "Mg",
+      logoPath: "/tech-logos/mongodb.svg",
+      hue: 128,
+      saturation: 46,
+      lightness: 40,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/redis/.test(normalized)) {
+    return {
+      logo: "Rd",
+      logoPath: "/tech-logos/redis.svg",
+      hue: 10,
+      saturation: 70,
+      lightness: 44,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/^sql$/.test(normalized)) {
+    return {
+      logo: "SQL",
+      logoPath: "/tech-logos/sql.svg",
+      hue: 212,
+      saturation: 54,
+      lightness: 38,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/database\s?design/.test(normalized)) {
+    return {
+      logo: "DB",
+      logoPath: "/tech-logos/database.svg",
+      hue: 194,
+      saturation: 44,
+      lightness: 40,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/aws|amazon\s?web\s?services/.test(normalized)) {
+    return {
+      logo: "AW",
+      logoPath: "/tech-logos/aws.svg",
+      hue: 39,
+      saturation: 90,
+      lightness: 45,
+      textColor: "#0f172a",
+    } satisfies OrbPalette;
+  }
+
+  if (/ci\s*\/?\s*cd|cicd/.test(normalized)) {
+    return {
+      logo: "CI",
+      logoPath: "/tech-logos/cicd.svg",
+      hue: 232,
+      saturation: 52,
+      lightness: 42,
+      textColor: "#0f172a",
     } satisfies OrbPalette;
   }
 
@@ -387,7 +540,7 @@ function projectOrb(orb: Orb, width: number, height: number) {
 
 function buildOrbs(labels: string[], width: number, height: number): Orb[] {
   const techPool = labels.length > 0 ? labels : ["Tech"];
-  const count = clamp(Math.max(techPool.length, MIN_COUNT), MIN_COUNT, TARGET_COUNT);
+  const count = clamp(techPool.length, MIN_COUNT, TARGET_COUNT);
   const spreadX = width * 0.32;
   const spreadY = height * 0.28;
 
@@ -458,7 +611,7 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
   const pointerRef = useRef<{ x: number; y: number; active: boolean }>({ x: 0, y: 0, active: false });
   const logoImagesRef = useRef<Map<string, HTMLImageElement>>(new Map());
 
-  const uniqueLabels = useMemo(() => Array.from(new Set(labels)), [labels]);
+  const randomizedLabelPool = useMemo(() => buildRandomizedLabelPool(labels), [labels]);
 
   useEffect(() => {
     const host = wrapRef.current;
@@ -478,7 +631,7 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
 
     let width = Math.max(320, Math.floor(host.clientWidth || host.getBoundingClientRect().width));
     let height = Math.max(320, Math.floor(host.clientHeight || host.getBoundingClientRect().height));
-    let world = buildOrbs(uniqueLabels, width, height);
+    let world = buildOrbs(randomizedLabelPool, width, height);
 
     const logoPaths = Array.from(new Set(world.map((orb) => orb.logoPath).filter((path): path is string => Boolean(path))));
     for (let i = 0; i < logoPaths.length; i += 1) {
@@ -504,7 +657,7 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
     const onResize = () => {
       width = Math.max(320, Math.floor(host.clientWidth || width));
       height = Math.max(320, Math.floor(host.clientHeight || height));
-      world = buildOrbs(uniqueLabels, width, height);
+      world = buildOrbs(randomizedLabelPool, width, height);
       const resizedLogoPaths = Array.from(new Set(world.map((orb) => orb.logoPath).filter((path): path is string => Boolean(path))));
       for (let i = 0; i < resizedLogoPaths.length; i += 1) {
         const path = resizedLogoPaths[i];
@@ -529,26 +682,10 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
 
         const depthFactor = clamp((orb.z - DEPTH_NEAR) / (DEPTH_FAR - DEPTH_NEAR), 0, 1);
         const toneShift = Math.round((0.5 - depthFactor) * 8);
-        const centerFill = `hsl(${orb.hue}, ${clamp(orb.saturation - 10, 18, 96)}%, ${clamp(
-          orb.lightness + 24 + toneShift,
-          30,
-          90
-        )}%)`;
-        const baseFill = `hsl(${orb.hue}, ${clamp(orb.saturation - 2, 20, 96)}%, ${clamp(
-          orb.lightness + 8 + toneShift,
-          24,
-          82
-        )}%)`;
-        const edgeFill = `hsl(${orb.hue}, ${clamp(orb.saturation + 6, 24, 98)}%, ${clamp(
-          orb.lightness - 9 + toneShift,
-          14,
-          68
-        )}%)`;
-        const strokeFill = `hsla(${orb.hue}, ${clamp(orb.saturation + 8, 24, 98)}%, ${clamp(
-          orb.lightness - 14 + toneShift,
-          10,
-          58
-        )}%, 0.9)`;
+        const centerFill = `hsl(0, 0%, ${clamp(98 + toneShift * 0.5, 94, 100)}%)`;
+        const baseFill = `hsl(0, 0%, ${clamp(94 + toneShift * 0.45, 88, 98)}%)`;
+        const edgeFill = `hsl(210, 12%, ${clamp(84 + toneShift * 0.35, 76, 90)}%)`;
+        const strokeFill = `hsla(210, 16%, ${clamp(70 + toneShift * 0.25, 62, 78)}%, 0.9)`;
 
         const sphereGradient = context.createRadialGradient(
           projected.x - renderR * 0.22,
@@ -586,9 +723,7 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
           context.beginPath();
           context.arc(projected.x, projected.y, renderR * 0.94, 0, Math.PI * 2);
           context.clip();
-          context.translate(projected.x, logoY);
-          context.rotate(orb.spin);
-          context.drawImage(logoImage, -logoSize / 2, -logoSize / 2, logoSize, logoSize);
+          context.drawImage(logoImage, projected.x - logoSize / 2, logoY - logoSize / 2, logoSize, logoSize);
           context.restore();
         } else {
           context.fillStyle = "#0b1220";
@@ -604,7 +739,7 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
         const lineHeight = labelFontSize * 1.05;
         const labelBaseY = projected.y + renderR * 0.64 - ((labelLines.length - 1) * lineHeight) / 2;
 
-        context.fillStyle = orb.textColor;
+        context.fillStyle = "#0f172a";
         for (let lineIndex = 0; lineIndex < labelLines.length; lineIndex += 1) {
           const line = labelLines[lineIndex];
           const lineY = labelBaseY + lineIndex * lineHeight;
@@ -844,7 +979,7 @@ export default function TechStackOrbField({ labels }: TechStackOrbFieldProps) {
       host.removeEventListener("pointercancel", onHostPointerLeave);
       cancelAnimationFrame(raf);
     };
-  }, [uniqueLabels]);
+  }, [randomizedLabelPool]);
 
   return (
     <div

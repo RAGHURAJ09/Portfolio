@@ -9,7 +9,7 @@ const stackSections = [
   { title: "Languages", items: skills.languages },
 ];
 
-const orbLabels = [...skills.backend, ...skills.database, ...skills.tools, ...skills.languages];
+const orbLabels = [...skills.backend, ...skills.database, ...skills.tools, ...skills.languages, "VS Code"];
 
 export default function TechStackSection() {
   return (

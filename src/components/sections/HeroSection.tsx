@@ -3,6 +3,7 @@
 import { Download, MapPin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Typewriter from "@/components/ui/Typewriter";
 import { heroTypingLines, personalInfo } from "@/data/portfolio";
 
@@ -96,10 +97,10 @@ export default function HeroSection() {
                 rel="noreferrer"
                 className="resume-action"
               >
-                <Download className="h-4 w-4" /> View CV
+                <Download className="h-4 w-4" /> View Resume
               </a>
               <a href={personalInfo.cvPath} download className="resume-action">
-                <Download className="h-4 w-4" /> Download CV
+                <Download className="h-4 w-4" /> Download Resume
               </a>
             </div>
           </div>
@@ -116,7 +117,16 @@ export default function HeroSection() {
           <div className="profile-shell relative">
             <div className="profile-ring" />
             <div className="profile-core">
-              <p className="text-center text-sm uppercase tracking-[0.3em] text-cyan-300/80">AI x Full Stack</p>
+              <div className="profile-photo-wrap">
+                <Image
+                  src="/profile-avatar.svg"
+                  alt="Raghuraj Pratap Rajpoot profile"
+                  width={240}
+                  height={240}
+                  className="profile-photo"
+                  priority
+                />
+              </div>
               <p className="mt-3 text-center text-lg font-medium text-white">Open to impactful roles</p>
             </div>
           </div>
