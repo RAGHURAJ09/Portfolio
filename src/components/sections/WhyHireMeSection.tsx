@@ -8,6 +8,7 @@ export default function WhyHireMeSection() {
   return (
     <section className="section-wrap" id="why-hire-me">
       <SectionHeading
+        id="why-hire-me"
         eyebrow="Why Hire Me"
         title="Builder mindset with AI execution depth"
         description="I combine ownership, speed, and practical AI implementation to drive meaningful outcomes."

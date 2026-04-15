@@ -30,8 +30,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="section-wrap scroll-mt-36 pb-24 md:scroll-mt-40" id="contact">
+    <section className="section-wrap pb-24" id="contact">
       <SectionHeading
+        id="contact"
         eyebrow="Contact"
         title="Let us build something meaningful"
         description="This form is ready for EmailJS wiring so recruiters can reach you instantly."

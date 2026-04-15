@@ -9,6 +9,7 @@ export default function ExperienceSection() {
   return (
     <section className="section-wrap" id="experience">
       <SectionHeading
+        id="experience"
         eyebrow="Experience"
         title="Applied Gen-AI in real product contexts"
         description="Execution-focused experience with practical outcomes and iterative delivery."

@@ -25,7 +25,7 @@ function SocialLogo({ type }: { type: "github" | "linkedin" }) {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] overflow-hidden px-6 pb-20 pt-40 md:px-10 md:pt-44" id="top">
+    <section className="relative min-h-[92vh] overflow-hidden px-6 pb-20 pt-28 md:px-10 md:pt-32" id="top">
       <div className="absolute inset-0 -z-10 opacity-70">
         <div className="hero-grid absolute inset-0" />
         <div className="hero-gradient absolute inset-0" />
@@ -55,8 +55,11 @@ export default function HeroSection() {
             FUTURE-READY ENGINEER
           </motion.span>
 
-          <h1 className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
-            {personalInfo.name}
+          <h1 className="mt-5 text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+            <span className="text-white">Hi I'm </span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+              {personalInfo.name}
+            </span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-zinc-300 md:text-xl">{personalInfo.title}</p>
           <div className="mt-5">
@@ -114,22 +117,37 @@ export default function HeroSection() {
           >
             <span>🚀 {personalInfo.internshipBadge}</span>
           </motion.div>
-          <div className="profile-shell relative">
-            <div className="profile-ring" />
-            <div className="profile-core">
-              <div className="profile-photo-wrap">
-                <Image
-                  src="/profile-avatar.svg"
-                  alt="Raghuraj Pratap Rajpoot profile"
-                  width={240}
-                  height={240}
-                  className="profile-photo"
-                  priority
-                />
-              </div>
-              <p className="mt-3 text-center text-lg font-medium text-white">Open to impactful roles</p>
+          <div className="group relative flex items-center justify-center">
+          <div className="absolute w-72 h-72 rounded-full 
+              bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
+              blur-2xl opacity-50 
+              group-hover:opacity-80 transition duration-500">
+          </div>
+
+          <div className="absolute w-67 h-67 rounded-full 
+              bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 
+              animate-spin-slow">
+          </div>
+
+          <div className="relative w-64 h-64 rounded-full 
+              bg-white/5 backdrop-blur-md 
+              border border-cyan-300/40
+              shadow-[0_0_60px_rgba(59,130,246,0.6)]
+              flex items-center justify-center">
+
+            <div className="w-60 h-60 rounded-full overflow-hidden">
+              <Image
+                src="/Portfolio-image.jpeg"
+                alt="Raghuraj Pratap Rajpoot profile"
+                width={240}
+                height={240}
+                className="w-full h-full object-cover 
+               hover:scale-110 transition duration-500"
+                priority
+              />
             </div>
           </div>
+        </div>
         </div>
       </motion.div>
     </section>

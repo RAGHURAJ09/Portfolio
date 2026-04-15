@@ -76,6 +76,7 @@ export default function LayeredStackSection() {
   return (
     <section className="section-wrap" id="stacked-showcase" ref={rootRef}>
       <SectionHeading
+        id="stacked-showcase"
         eyebrow="Experience Flow"
         title="Layered Section Stack"
         description="Navigate a premium card-stack preview where each section stays visible in depth while the active layer slides forward."

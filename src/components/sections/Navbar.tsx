@@ -17,9 +17,9 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed left-0 top-6 z-40 w-full px-4 md:px-8 md:top-8">
-      <nav className="nav-shell mx-auto w-full max-w-7xl">
-        <div className="flex items-center justify-between gap-4 px-5 py-4 md:px-7 md:py-5">
+    <header className="fixed left-0 top-3 z-40 w-full px-3 md:px-6 md:top-5">
+      <nav className="nav-shell mx-auto w-full max-w-5xl">
+        <div className="flex items-center justify-between gap-4 px-4 py-2.5 md:px-5 md:py-3">
           <Link href="/#top" className="nav-brand text-sm font-semibold tracking-[0.32em] text-cyan-200">
           PORTFOLIO
           </Link>
@@ -47,7 +47,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-cyan-200 transition hover:border-cyan-300/50 md:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-white/5 text-cyan-200 transition hover:border-cyan-300/50 md:hidden"
               aria-label="Toggle navigation menu"
             >
               <span className="relative block h-4 w-5">

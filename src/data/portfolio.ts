@@ -7,6 +7,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/raghuraj-rajpoot",
   internshipBadge: "Gen-AI Intern @ SkillCred",
   cvPath: "/Raghuraj_Pratap_Rajpoot_CV.pdf",
+  profileImagePosition: "center 45%",
 };
 
 export const navLinks = [
@@ -193,11 +194,26 @@ export const skillExperiences: SkillExperience[] = [
 ];
 
 export const certifications = [
-  "Microsoft AI-900",
-  "Microsoft AZ-900",
-  "Microsoft DP-700",
-  "Infosys Springboard",
-  "HackerRank Certifications",
+  {
+    name: "Microsoft AI-900",
+    certificateUrl: "/certificates/Microsoft-AI-900.pdf",
+  },
+  {
+    name: "Microsoft AZ-900",
+    certificateUrl: "/certificates/Microsoft-AZ-900.pdf",
+  },
+  {
+    name: "Microsoft DP-700",
+    certificateUrl: "/certificates/Microsoft-DP-700.pdf",
+  },
+  {
+    name: "Infosys Springboard",
+    certificateUrl: "/certificates/Infosys-Springboard.pdf",
+  },
+  {
+    name: "HackerRank Certifications",
+    certificateUrl: "/certificates/HackerRank-Certifications.pdf",
+  },
 ];
 
 export const experience = [

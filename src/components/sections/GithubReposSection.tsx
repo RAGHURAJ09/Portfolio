@@ -48,6 +48,7 @@ export default function GithubReposSection() {
   return (
     <section className="section-wrap" id="github">
       <SectionHeading
+        id="github"
         eyebrow="GitHub"
         title="Selected live repositories"
         description="A curated preview of relevant work. Only the strongest repos are surfaced here."

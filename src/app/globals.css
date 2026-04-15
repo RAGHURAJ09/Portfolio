@@ -16,6 +16,10 @@
   --font-mono: var(--font-space);
 }
 
+html {
+  scroll-padding-top: 4.5rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -101,7 +105,7 @@ body::before {
 }
 
 .nav-shell {
-  border-radius: 1.3rem;
+  border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background:
     linear-gradient(130deg, rgba(11, 16, 30, 0.9), rgba(8, 13, 24, 0.72)),
@@ -231,7 +235,7 @@ body::before {
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.04);
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
   color: #d5e7ff;
 }

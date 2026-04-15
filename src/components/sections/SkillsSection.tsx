@@ -67,6 +67,7 @@ export default function SkillsSection() {
   return (
     <section className="section-wrap" id="skills">
       <SectionHeading
+        id="skills"
         eyebrow="Skills"
         title="AI-first, full-stack engineering capabilities"
         description="An execution-ready skill map across Gen-AI, web development, backend systems, and production tooling."

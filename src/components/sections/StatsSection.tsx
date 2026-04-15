@@ -30,6 +30,7 @@ export default function StatsSection() {
   return (
     <section className="section-wrap" id="stats">
       <SectionHeading
+        id="stats"
         eyebrow="Impact"
         title="Numbers that show momentum"
         description="Built with consistency, measurable outcomes, and AI-first execution."

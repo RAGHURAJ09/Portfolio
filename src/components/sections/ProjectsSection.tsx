@@ -11,6 +11,7 @@ export default function ProjectsSection() {
   return (
     <section className="section-wrap" id="projects">
       <SectionHeading
+        id="projects"
         eyebrow="Projects"
         title="AI + Engineering products that solve real problems"
         description="Each build blends practical AI with scalable full-stack architecture."
@@ -39,9 +40,6 @@ export default function ProjectsSection() {
                   ))}
                 </div>
                 <div className="mt-7 flex gap-3">
-                  <a href={project.live} target="_blank" className="btn-secondary inline-flex items-center gap-2">
-                    <ArrowUpRight className="h-4 w-4" /> Live Demo
-                  </a>
                   <a href={project.github} target="_blank" className="btn-secondary inline-flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" /> GitHub
                   </a>

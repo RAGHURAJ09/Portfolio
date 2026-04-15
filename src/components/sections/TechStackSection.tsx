@@ -15,6 +15,7 @@ export default function TechStackSection() {
   return (
     <section className="section-wrap" id="techstack">
       <SectionHeading
+        id="techstack"
         eyebrow="Capability Matrix"
         title="Tech Stack"
         description="Interactive physics stack: technologies move in from every direction, collide naturally, and react to your cursor with bounce impulses."
